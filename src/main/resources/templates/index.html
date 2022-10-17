@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Mancala</title>
+
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Mancala Game</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3" style="text-align:center; background-color:lavenderblush;">
+                <h1>
+                    <label>Player 2: </label>
+                    <span th:text="${player2.score}"></span>
+                </h1>
+            </div>
+            <div class="col-sm-6">
+                <table style="width:100%">
+                    <tr>
+                        <td th:each="p2House, iterStat : ${player2.getHouses()}" style="text-align:center; background-color:lavender;">
+                            <a th:href="@{'/move/2/' + ${iterStat.count}}"><span th:text="${p2House.count}"></span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td th:each="p1House,iterStat : ${player1.getHouses()}" style="text-align:center; background-color:lavenderblush;">
+                            <a th:href="@{'/move/1/' + ${iterStat.count}}"><span th:text="${p1House.count}"></span></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-3" style="text-align:center; background-color:lavender;">
+                <h1>
+                    <label>Player 1: </label>
+                    <span th:text="${player1.score}"></span>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
